@@ -2,7 +2,7 @@
 * @Description: 1022. 宠物小精灵之收服
 * @Author: Xiaobin Ren
 * @Date:   2020-09-22 23:28:58
-* @Last Modified time: 2020-09-22 23:29:10
+* @Last Modified time: 2020-09-23 08:43:26
 */
 #include <iostream>
 #include <algorithm>
@@ -36,7 +36,6 @@ int main(){
     while(k > 0 && f[V1][k-1] == f[V1][V2 - 1]) k--;
     
     cout << V2 - k << endl;
-    
     
     return 0;
 }
