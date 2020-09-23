@@ -2,7 +2,7 @@
 * @Description: 1020. 潜水员
 * @Author: Xiaobin Ren
 * @Date:   2020-09-23 16:44:24
-* @Last Modified time: 2020-09-23 16:44:58
+* @Last Modified time: 2020-09-23 16:46:42
 */
 #include <iostream>
 #include <algorithm>
@@ -10,7 +10,7 @@
 using namespace std;
 
 
-//二维费用变型  求最大 变为求最小
+//二维费用变型  求最大 变为求最小 
 //也就是 第一维费用>=m 第二维费用>= n ，f[][] 的最小值
 
 const int N = 50, M = 160;
