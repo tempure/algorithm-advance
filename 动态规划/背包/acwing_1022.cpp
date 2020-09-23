@@ -2,7 +2,7 @@
 * @Description: 1022. 宠物小精灵之收服
 * @Author: Xiaobin Ren
 * @Date:   2020-09-22 23:28:58
-* @Last Modified time: 2020-09-23 08:43:26
+* @Last Modified time: 2020-09-23 10:11:30
 */
 #include <iostream>
 #include <algorithm>
@@ -10,7 +10,7 @@ using namespace std;
 
 const int N = 1010, M = 510;
 
-//二维费用背包 同样也可以优化到1维
+//二维费用背包 同样也可以优化到2维
 
 //f[i][j][k] 表示前i个小精灵选 费用1不超过j 费用2 不超过k 的最大价值 也就是抓到的最多的小精灵数量
 
