@@ -1,8 +1,8 @@
 /*
-* @Description: 
+* @Description: 7. 混合背包问题
 * @Author: Xiaobin Ren
 * @Date:   2020-09-26 18:28:17
-* @Last Modified time: 2020-09-26 18:28:27
+* @Last Modified time: 2020-09-26 18:28:59
 */
 #include <iostream>
 #include <algorithm>
