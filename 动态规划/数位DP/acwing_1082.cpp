@@ -2,7 +2,7 @@
 * @Description: 1082. 数字游戏
 * @Author: Xiaobin Ren
 * @Date:   2020-10-05 17:07:52
-* @Last Modified time: 2020-10-07 10:46:15
+* @Last Modified time: 2020-10-07 11:55:54
 */
 #include <iostream>
 #include <algorithm>
@@ -34,7 +34,7 @@ int dp(int n){
     int last = 0;  // 上一位的值 
     for(int i = nums.size() - 1; i>= 0; i--){
         int x = nums[i];
-        for(int j = last; j <x; j++){ //x是最大的，题目给定的区间最大值 不能超过
+        for(int j = last; j <x; j++){ //左分支 枚举到 x - 1 
             res += f[i+1][j]; //包括当前的第i位，一共还有i + 1位
         }
         if(x < last) break; 
