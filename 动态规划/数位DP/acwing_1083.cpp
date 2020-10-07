@@ -2,7 +2,7 @@
 * @Description: 1083. Windy数
 * @Author: Xiaobin Ren
 * @Date:   2020-10-07 12:00:43
-* @Last Modified time: 2020-10-07 12:01:04
+* @Last Modified time: 2020-10-07 12:13:43
 */
 #include <iostream>
 #include <algorithm>
@@ -43,7 +43,7 @@ int dp(int n){
         if(!i) res ++;
     }
     
-    //处理有前导0的数
+    //处理有前导0的数 上边处理的答案都是位数为n的 还要加上小于n位的
     for(int i = 1; i < nums.size(); i++) //位数
         for(int j = 1; j <= 9; j++)
             res += f[i][j];
