@@ -2,7 +2,7 @@
 * @Description: 1082. 数字游戏
 * @Author: Xiaobin Ren
 * @Date:   2020-10-05 17:07:52
-* @Last Modified time: 2020-10-05 17:08:07
+* @Last Modified time: 2020-10-07 10:46:15
 */
 #include <iostream>
 #include <algorithm>
@@ -19,7 +19,7 @@ int f[N][N];
 void init(){
     for(int i = 0; i <= 9; i++) f[1][i] = 1;  //只有一位的情况下 全部都是1
     
-    for(int i = 2; i < N; i++) // 0 ~N 所有的数字
+    for(int i = 2; i < N; i++) // 0 ~N 所有的数字 从2位数开始枚举
         for(int j = 0; j <= 9; j++)  // 最高位的数字
             for(int k = j; k <= 9; k++)
                 f[i][j] += f[i - 1][k];
@@ -34,13 +34,13 @@ int dp(int n){
     int last = 0;  // 上一位的值 
     for(int i = nums.size() - 1; i>= 0; i--){
         int x = nums[i];
-        for(int j = last; j <x; j++){
-            res += f[i+1][j];
+        for(int j = last; j <x; j++){ //x是最大的，题目给定的区间最大值 不能超过
+            res += f[i+1][j]; //包括当前的第i位，一共还有i + 1位
         }
-        if(x < last) break;
+        if(x < last) break; 
         last = x;
         
-        if(!i) res ++;
+        if(!i) res ++; //最后一个分支 没有被break 就是合法的 加上一个
     }
     
     return res;
@@ -53,4 +53,3 @@ int main(){
     
     return 0;
 }
-
