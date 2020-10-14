@@ -2,7 +2,7 @@
 * @Description: 1106. 山峰和山谷
 * @Author: Xiaobin Ren
 * @Date:   2020-10-14 15:32:54
-* @Last Modified time: 2020-10-14 15:33:20
+* @Last Modified time: 2020-10-14 15:38:27
 */
 #include <iostream>
 #include<algorithm>
@@ -31,6 +31,7 @@ void bfs(int sx, int sy, bool & has_heigher, bool & has_lower){
         pii t = q[hh++];
         for(int i = t.x - 1; i <= t.x + 1; i++)
             for(int j = t.y - 1; j <= t.y + 1; j++){
+                if(i == t.x && j == t.y) continue;  //这个判断可有可无 如果不加 后边会在st判断时候 不会入队
                 if(i < 0 || i >= n || j <0 || j >= n) continue;
                 //只要周围的点高度和中心点不一样，那就不在同一个连通块里 需要
                 //高度相同的 就直接不会进入下面的if判断 
