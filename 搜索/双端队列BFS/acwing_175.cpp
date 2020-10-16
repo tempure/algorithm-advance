@@ -2,7 +2,7 @@
 * @Description: 175. 电路维修
 * @Author: Xiaobin Ren
 * @Date:   2020-10-16 18:07:20
-* @Last Modified time: 2020-10-16 18:07:32
+* @Last Modified time: 2020-10-16 18:13:07
 */
 #include <iostream>
 #include <algorithm>
@@ -30,7 +30,7 @@ int bfs(){
     memset(st, 0, sizeof st);
     memset(dist, 0x3f, sizeof dist);
     
-    char cs[] = "\\/\\/";
+    char cs[] = "\\/\\/";  // //每个点顺时针旋转四个方向的边
     
     //每个点对角线可以走到的4个点
     int dx[4] = {-1, -1, 1, 1}, dy[4] = {-1, 1, 1, -1};
