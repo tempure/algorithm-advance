@@ -2,7 +2,7 @@
 * @Description: 170. 加成序列
 * @Author: Xiaobin Ren
 * @Date:   2020-10-21 18:49:12
-* @Last Modified time: 2020-10-21 18:49:21
+* @Last Modified time: 2020-10-21 18:56:24
 */
 #include <iostream>
 #include <algorithm>
@@ -19,6 +19,9 @@ int n;
 bool dfs(int u, int max_depth){  //当前层数 最大层数
     if(u > max_depth)return false;
     if(path[u - 1] == n) return true; //u-1是因为必须搜索完上一层，这一层开始才能判断是否符合
+    //将st数组开在dfs里面，原因: 因为path是全局，每次dfs更新的都是当前位置
+    //的元素，双重循环只需要判重在此之前的元素的组合之后的和
+    //所以每次都会初始化st数组 重新判定
     bool st[N] = {0};
     for(int i = u -1; i >= 0; i--) //枚举2个数的和
         for(int j = i; j >= 0; j--){
