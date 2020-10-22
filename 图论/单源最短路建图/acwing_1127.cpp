@@ -2,7 +2,7 @@
 * @Description: 1127. 香甜的黄油
 * @Author: Xiaobin Ren
 * @Date:   2020-10-22 22:19:27
-* @Last Modified time: 2020-10-22 22:19:40
+* @Last Modified time: 2020-10-22 22:21:20
 */
 #include <iostream>
 #include <cstring>
@@ -31,6 +31,7 @@ void add(int a, int b, int c){
 }
 
 int spfa(int start){
+	//初始化要注意 dist的初始化 放在spfa函数里面 如果要多次调用spfa的话
     memset(dist, 0x3f, sizeof dist);    
     memset(st, 0, sizeof st);
     
