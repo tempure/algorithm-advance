@@ -51,7 +51,7 @@ int main(){
     bfs();
     
     if(dist[n] == 0x3f3f3f3f) cout << "NO" << endl;
-    else cout << dist[n] -1 << endl;
+    else cout << max(dist[n] -1, 0) << endl;
     
     return 0;
 }
