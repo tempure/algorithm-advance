@@ -35,10 +35,11 @@ void bfs(){
 			int j = e[i];
 			if(dist[j] > dist[t] + 1){ //更新最短路 同时更新 cnt
 				dist[j] = dist[t] + 1;
-				cnt[j] =  cnt[t];
+				cnt[j] =  cnt[t]; //j第一次被t更新
 				q[++tt] =  j;	
 			}
-			else if(dist[j] == dist[t] + 1){ //距离相同 就加上
+			//j已经被其他点更新过了，已经最优了，直接加上
+			else if(dist[j] == dist[t] + 1){ 
 				cnt[j] = (cnt[j] + cnt[t]) % mod;
 			}
 		}
