@@ -45,7 +45,8 @@ int main(){
 		if(a != b) p[a] = b; //当前ab是最优解 也就是排序后的边 
 		else res += w; //已经有边了 那么就去掉 更新答案
 	}
-	
+
 	cout << res << endl;
+	
 	return 0;
 }
