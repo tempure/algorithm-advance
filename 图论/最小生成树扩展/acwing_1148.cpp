@@ -50,6 +50,7 @@ int find(int x){
     return p[x];
 }
 
+//当前点 当前点父节点 当前最大边权 当前次大边权 存储最大和次大边权的数组
 void dfs(int u, int fa, int max1, int max2, int d[], int d2[]){
     d[u] = max1;
     d2[u] = max2; // 次大值
@@ -90,8 +91,8 @@ int main(){
         }
     }
 
-    //每两个点路径的边权最大值
-    for(int i = 1; i <= n; i++) dfs(i, -1, 0, 0, dist[i], dist2[i]); //当前点 当前点父节点 当前最大边权 更新的是哪个数组
+    //每两个点路径的边权最大值和次大值
+    for(int i = 1; i <= n; i++) dfs(i, -1, 0, 0, dist[i], dist2[i]);
 
     ll res = 1e18;
     
