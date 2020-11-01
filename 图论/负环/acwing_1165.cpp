@@ -50,7 +50,7 @@ bool check(double mid){
             if(dist[j] < dist[t] + w[i] - mid){
                 dist[j] = dist[t] + w[i] - mid;
                 cnt[j] = cnt[t] + 1;
-                if(++count > 10 * n) return true; //玄学优化 迭代次数>10 * n就大概率有解
+                if(++count > 10 * N) return true; //玄学优化 迭代次数>10 * N就大概率有解
                 if(cnt[j] >= N) return true; //注意是点数 也就是边数 >= 点数到时候 就退出
                 //这里不是 一定要确切大于 而是找一个上界就可以 因为最后边数会迭代到无穷大
                 if(!st[j]){
