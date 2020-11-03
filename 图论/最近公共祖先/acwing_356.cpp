@@ -14,16 +14,16 @@ typedef pair<int, int> pii;
 mt19937 mrand(random_device{}());
 const ll mod = 1000000007;
 int rnd(int x) { return mrand() % x;}
-ll mulmod(ll a, ll b) {ll res=0;a%=mod;assert(b>=0);for(;b;b>>=1){if(b&1)res=(res+a)%mod;a=2*a%mod;}return res;}
-ll powmod(ll a, ll b) {ll res=1;a%=mod;assert(b>=0);for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}
+ll mulmod(ll a, ll b) {ll res = 0; a %= mod; assert(b >= 0); for (; b; b >>= 1) {if (b & 1)res = (res + a) % mod; a = 2 * a % mod;} return res;}
+ll powmod(ll a, ll b) {ll res = 1; a %= mod; assert(b >= 0); for (; b; b >>= 1) {if (b & 1)res = res * a % mod; a = a * a % mod;} return res;}
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //snippet-head
 
 
 //倍增 LCA 优化寻找最大和次大边权的过程 暴力dfs改为倍增求最大次大
 //其余步骤不变 先kruskal 然后枚举所有非树边
-//d1[i][j] 表示从i开始向上跳2^j步 过程当中，路上的最小边权
-//d2[i][j] 表示从i开始向上跳2^j步 路径上的次小边权
+//d1[i][j] 表示从i开始向上跳2^j步 过程当中，路上的最大边权
+//d2[i][j] 表示从i开始向上跳2^j步 路径上的次大边权
 
 const int N = 100010, M = 300010;
 const int INF = 0x3f3f3f3f;
@@ -68,7 +68,7 @@ ll kruskal() {
             edge[i].used = true;
         }
     }
-    
+
     return res;
 }
 
@@ -98,6 +98,7 @@ void bfs() { //预处理节点深度 以及每个点跳2^k后路径上的最大�
                 for (int k = 1; k <= 16; k++) {
                     int anc =  fa[j][k - 1];
                     fa[j][k] = fa[anc][k - 1];
+                    //注意每次更新一段 都是用2小端来更新，先预处理2次都跳2^(k-1)步 然后遍历 一次求出
                     int distance[4] = {d1[j][k - 1], d2[j][k - 1], d1[anc][k - 1], d2[anc][k - 1]};
                     d1[j][k] = d2[j][k] = -INF;
                     for (int u = 0; u < 4; u++) {
@@ -111,25 +112,25 @@ void bfs() { //预处理节点深度 以及每个点跳2^k后路径上的最大�
     }
 }
 
-int lca(int a, int b, int w){
-    static int distance[N * 2];  //缓存每一次跳的一段路上的最大和次大 最后取max 
+int lca(int a, int b, int w) {
+    static int distance[N * 2];  //缓存每一次跳的一段路上的最大和次大 最后取max
     int cnt = 0;
-    if(depth[a] < depth[b]) swap(a, b);
+    if (depth[a] < depth[b]) swap(a, b);
 
-    for(int k = 16; k >= 0; k--)
-        if(depth[fa[a][k]] >= depth[b]){
+    for (int k = 16; k >= 0; k--)
+        if (depth[fa[a][k]] >= depth[b]) {
             distance[cnt++] = d1[a][k];
             distance[cnt++] = d2[a][k];
             a = fa[a][k];
         }
-    if(a!=b){
-        for(int k = 16; k >= 0; k--)
-            if(fa[a][k] != fa[b][k]){
+    if (a != b) {
+        for (int k = 16; k >= 0; k--)
+            if (fa[a][k] != fa[b][k]) { //将
                 distance[cnt++] = d1[a][k];
                 distance[cnt++] = d2[a][k];
                 distance[cnt++] = d1[b][k];
                 distance[cnt++] = d2[b][k];
-                a = fa[a][k],  b = fa[b][k];
+                a = fa[a][k], b = fa[b][k];
             }
         distance[cnt++] = d1[a][0];
         distance[cnt++] = d1[b][0]; //最后加上到lca的一步
@@ -137,14 +138,14 @@ int lca(int a, int b, int w){
 
     int dist1 = -INF, dist2 = -INF;  //最大值和次大值
 
-    for(int i = 0; i < cnt; i++){
+    for (int i = 0; i < cnt; i++) {
         int d = distance[i];
-        if(d > dist1) dist2 = dist1, dist1 = d;
-        else if(d != dist1 && d > dist2) dist2 = d;
+        if (d > dist1) dist2 = dist1, dist1 = d;
+        else if (d != dist1 && d > dist2) dist2 = d;
     }
 
-    if(w > dist1) return w - dist1;
-    if(w > dist2) return w - dist2;
+    if (w > dist1) return w - dist1;
+    if (w > dist2) return w - dist2;
 
     return INF;
 
