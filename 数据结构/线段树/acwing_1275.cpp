@@ -57,6 +57,7 @@ void build(int u, int l, int r) {
     if (l == r) return ;
     int mid = l + r >> 1;
     build(u << 1, l, mid), build(u << 1 | 1, mid + 1, r);
+    pushup(u);
 }
 
 int main() {
