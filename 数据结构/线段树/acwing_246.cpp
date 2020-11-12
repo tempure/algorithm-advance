@@ -69,7 +69,7 @@ Node query(int u, int l, int r) {
         else if (l > mid) return query(u << 1 | 1, l, r);
         else {
             auto left = query(u << 1, l,  r);
-            auto right = query(u << 1 | 1, l , r);
+            auto right = query(u << 1 | 1, l, r);
             Node res;
             pushup(res, left, right);
             return res;
