@@ -18,7 +18,7 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 
 const int N = 100010;
 
-int n, m;
+int n, m; 
 int a[N];
 vector<int> nums;
 
