@@ -134,7 +134,8 @@ int main() {
         scanf("%d%d", &opt, &x);
         if (opt == 1) insert(root, x);
         else if (opt == 2) del(root, x);
-        else if (opt == 3) printf("%d\n", get_rank_by_key(root, x) - 1);
+        //由于build时候加入了-INF节点 查rank和key时候 注意加一减一      
+        else if (opt == 3) printf("%d\n", get_rank_by_key(root, x) - 1); 
         else if (opt == 4) printf("%d\n", get_key_by_rank(root, x + 1));
         else if (opt == 5) printf("%d\n", get_prev(root, x));
         else if (opt == 6) printf("%d\n", get_next(root, x));
