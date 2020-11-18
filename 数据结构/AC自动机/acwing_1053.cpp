@@ -71,11 +71,14 @@ int main() {
         f[0][0] = 0;
 
         //DP
+        //i枚举长串 j枚举自动机的节点也就是病毒串
         for (int i = 0; i < m; i++)
             for (int j = 0; j <= idx; j++)
                 for (int k = 0; k < 4; k++) {
+                    //如果第k步选择的字符和DNA片段的相同，说明这一步没有修改，代价为0，反之为1。
                     int t = get(str[i + 1]) != k;
                     int p = tr[j][k];
+                    //第i + 1位置长串的字符 可以由i位置的字符 在自动机上j的子节点k转移过来
                     if (!dar[p]) f[i + 1][p] = min(f[i + 1][p], f[i][j] + t);
                 }
 
