@@ -28,7 +28,7 @@ void get_euler(int n) { //线性筛求欧拉函数
     memset(v, 0, sizeof v);
     cnt = 0;
 
-    phi[1] = 0;
+    phi[1] = 1;
     for (int i = 2; i <= n; i++) {
         if (!v[i]) {
             primes[cnt++] = i;
