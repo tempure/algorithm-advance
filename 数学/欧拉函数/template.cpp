@@ -15,7 +15,21 @@ ll powmod(ll a, ll b) {ll res = 1; a %= mod; assert(b >= 0); for (; b; b >>= 1) 
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //snippet-head
 
-//线性筛 求欧拉函数模板
+
+//分解质因子求某个数欧拉函数 复杂度sqrt(n)
+ll get_euler(ll c) {
+    ll res = c;
+    for (int i = 2; i <= c / i; i++)
+        if (c % i == 0) {
+            while (c % i == 0) c /= i;
+            res = res / i  * (i - 1);
+        }
+    if (c > 1) res = res / c * (c - 1);
+    return res;
+}
+
+
+//线性筛 求1 ~ N中所有数欧拉函数模板
 
 const int N = 1010;
 
