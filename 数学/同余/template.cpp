@@ -18,6 +18,22 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 
 //exgcd模板
 
+// long long
+
+ll exgcd(ll a, ll b, ll &x, ll & y) {
+    if (!b) {
+        x = 1, y = 0;
+        return a;
+    }
+
+    ll d = exgcd(b, a % b, y, x);
+    y -= a / b * x;
+
+    return d;
+}
+
+//int
+
 int exgcd(int a, int b, int &x, int &y) {
     if (!b) {
         x = 1, y = 0;
