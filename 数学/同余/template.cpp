@@ -45,3 +45,13 @@ int exgcd(int a, int b, int &x, int &y) {
 
     return d;
 }
+
+//void 版本
+void exgcd(ll a, ll b, ll &x, ll & y) {
+    if (!b)
+        x = 1, y = 0;
+    else {
+        exgcd(b, a % b, y, x);
+        y -= a / b * x;
+    }
+}
