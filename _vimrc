@@ -24,14 +24,14 @@ set guioptions-=b
 set guioptions-=e
 set nolist
 
-//语言显示为英文
+"语言显示为英文
 " set the menu & the message to English
 set langmenu=en_US
 let $LANG= 'en_US'
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-//打开进入默认目录
+"打开进入默认目录
 cd C:\Users\Xiaobin Ren\ACM
 
 inoremap { {}<Left>
@@ -274,7 +274,7 @@ map <leader>ba :bufdo bd<cr>
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
-//快捷leader键 控制tab标签页
+"快捷leader键 控制tab标签页
 " Useful mappings for managing tabs
 "map <leader>n :tabnew<cr>
 "map <leader>to :tabonly<cr>
