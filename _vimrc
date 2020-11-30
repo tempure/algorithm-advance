@@ -6,7 +6,8 @@ set hls
 set is
 set cb=unnamed
 "set gfn=Fixedsys:h15
-set gfn=JetBrains_Mono:h11
+"set gfn=JetBrains_Mono:h11
+set gfn=consolas:b:h12
 set ts=4
 set sw=4
 set si
@@ -39,9 +40,10 @@ inoremap {<CR> {<CR>}<Esc>O
 inoremap {{ {
 inoremap {} {}
 
-"ctrl+b编译之后  ctrl+n运行
+"ctrl+b编译 ctrl+n运行 normal mode下ctrl +a全部复制到粘贴板
 autocmd filetype cpp nnoremap <C-B> :w <bar> !g++ -std=c++14 % -o %:r -Wl,--stack,268435456<CR>
 autocmd filetype cpp nnoremap <C-N> :!%:r<CR>
+autocmd filetype cpp nnoremap <C-A> :%y+<CR>
 autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
 
 set nu
