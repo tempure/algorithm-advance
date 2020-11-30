@@ -39,7 +39,7 @@ inoremap {<CR> {<CR>}<Esc>O
 inoremap {{ {
 inoremap {} {}
 
-"ctrl+b编译之后 按enter 然后 ctrl+n运行
+"ctrl+b编译之后  ctrl+n运行
 autocmd filetype cpp nnoremap <C-B> :w <bar> !g++ -std=c++14 % -o %:r -Wl,--stack,268435456<CR>
 autocmd filetype cpp nnoremap <C-N> :!%:r<CR>
 autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
