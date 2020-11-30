@@ -15,7 +15,7 @@ set undofile
 set lines=50 columns=90
 color solarized
 "不显示工具/菜单栏
-set guioptions-=T "打印机那一
+set guioptions-=T "不显示打印机那一行菜单栏
 set guioptions-=m
 set guioptions-=L
 set guioptions-=r
@@ -24,12 +24,14 @@ set guioptions-=b
 set guioptions-=e
 set nolist
 
+//语言显示为英文
 " set the menu & the message to English
 set langmenu=en_US
 let $LANG= 'en_US'
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
+//打开进入默认目录
 cd C:\Users\Xiaobin Ren\ACM
 
 inoremap { {}<Left>
@@ -272,6 +274,7 @@ map <leader>ba :bufdo bd<cr>
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
+//快捷leader键 控制tab标签页
 " Useful mappings for managing tabs
 "map <leader>n :tabnew<cr>
 "map <leader>to :tabonly<cr>
