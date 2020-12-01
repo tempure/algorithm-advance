@@ -31,7 +31,7 @@ ll qmi(ll a, ll b) {
     return res;
 }
 
-int c(int a, int b) {
+int c(int a, int b) { //逆元求组合数
     // return res;
     if (a < b) return 0; //不管为了正确性还是时间来说都请加上这句话
     int down = 1, up = 1;
