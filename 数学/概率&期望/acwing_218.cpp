@@ -31,7 +31,7 @@ double dp(int a, int b, int c, int d, int x, int y) {
     if (a > 13 || b > 13 || c > 13 || d > 13) return v = INF; //输入有误数据
 
     int sum = a + b + c + d + (x != 4) + (y != 4); //当前已经翻开的牌总数
-    v = 1;  //初始化当前状态 开始计算
+    v = 1;  //初始化 因为一定要先翻一张再计算 v初始为1
     sum = 54 - sum; //剩余牌数
     if (sum <= 0) return v = INF;
 
