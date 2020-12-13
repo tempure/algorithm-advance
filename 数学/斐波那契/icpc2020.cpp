@@ -15,6 +15,36 @@ ll powmod(ll a, ll b) {ll res = 1; a %= mod; assert(b >= 0); for (; b; b >>= 1) 
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //head
 
+/*
+In mathematics, the Fibonacci numbers, commonly denoted as fn, is a sequence such that each number
+is the sum of the two preceding numbers, starting with 1 and 1. That is, f1 = 1, f2 = 1 and
+fn = fn−2 + fn−1 (n ≥ 3).
+Thus, the beginning of the sequence is 1, 1, 2, 3, 5, 8, 13, 21, . . . .
+Given n, please calculate Σ(i=1,n)Σ(j=i+1,n)g(fi, fj), where g(x, y) = 1 when x·y is even, otherwise g(x, y) = 0.
+Input
+The only line contains one integer n (1 ≤ n ≤ 1e9).
+Output
+Output one number – Σ(i=1,n)Σ(j=i+1,n)g(fi, fj).
+
+示例1
+输入
+3
+输出
+2
+
+示例2
+输入
+10
+输出
+24
+
+示例3
+输入
+100
+输出
+2739
+
+*/
 
 int n;
 
