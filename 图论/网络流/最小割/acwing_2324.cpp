@@ -18,6 +18,11 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 
 /*
 最大密度子图是对于无向图定义的
+建图方式：如果是原图的边，那么边权是1，正反边都是1
+虚拟源点S向所有点连边，边权为m，就是总共的原图边数，反向边权值为0
+每个点向虚拟汇点连边，边权为m + 2g - d[i]，g是二分的mid, d[i]是这个点的总度数
+每一次二分，也就是每一次dinic都是重新建图
+二分检验(m * n - dinic(mid)) / 2 是否大于0 如果大于0说明当前二分的密度存在可以更大
 */
 
 const int N = 110, M = (1000 + N * 2) * 2, INF = 0x3f3f3f3f;
@@ -51,7 +56,7 @@ void build(double g) {
     }
 }
 
-void dfs(int u) {
+void dfs(int u) { //寻找可行方案 也就是一个最大密度子图的点集
     st[u] = true;
     if (u != S) ans ++; //虚拟源点不算
     for (int i = h[u]; i != -1; i = ne[i]) {
@@ -76,7 +81,7 @@ double find(int u, double limit) {
     return flow;
 }
 
-bool bfs() { //寻找可行方案 也就是一个最大密度子图的点集
+bool bfs() {
     int hh = 0, tt = 0;
     memset(d, -1, sizeof  d);
     q[0] = S, d[S] = 0, cur[S] = h[S];
