@@ -160,4 +160,6 @@ int main() {
             if (b == T) printf("%d -\n", a - n); //该边的终点是S同时是割边，那么就是减号操作
         }
     }
+
+    return 0;
 }
