@@ -36,7 +36,6 @@ const int N = 10010, M = 60010, INF = 0x3f3f3f3f;
 int n, m, S, T;
 int h[N], e[M], ne[M], f[M], idx;
 int q[N], d[N], cur[N];
-// int w[110][110]; //整个图的点权
 
 int get(int x, int y) {
     //横纵坐标都从1开始 返回该点累加加点过程中的编号
