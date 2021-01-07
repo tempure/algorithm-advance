@@ -17,7 +17,7 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 
 //最小费用最大流模板
 //最大费用只需要改为最长路求解即可
-//此模板费用 = 流量 * 路径长度 路径权值是单位费用  
+//此模板费用 = 流量 * 路径长度 路径权值是单位费用
 
 // 求最大费用的方法：将w[]数组元素取负，恢复原图流量，再求最短路，求出的就是负值的最长路
 // 最后取反输出答案即可
@@ -62,6 +62,7 @@ bool spfa() {
     return incf[T] > 0; //如果大于0说明S可以走到T 不然就不连通
 }
 
+//无返回值模板
 void EK(int & flow, int & cost) {
     flow = cost = 0;
     while (spfa()) {
@@ -74,6 +75,20 @@ void EK(int & flow, int & cost) {
     }
 }
 
+//返回费用模板
+int EK2(int & flow, int & cost) {
+    flow = cost = 0;
+    while (spfa()) {
+        int t = incf[T]; //当前找到的新的增广路的流量
+        flow += t, cost += t * d[T];
+        for (int i = T; i != S; i = e[pre[i] ^ 1]) {
+            f[pre[i]] -= t;
+            f[pre[i] ^ 1] += t;
+        }
+    }
+    return cost; //返回最小费用
+}
+
 int main() {
 
     scanf("%d%d%d%d", &n, &m, &S, &T);
@@ -84,6 +99,8 @@ int main() {
         add(a, b, c, d);
     }
     int flow, cost; //最大流以及费用
+
+    //最小费用
     EK(flow, cost);
     printf("%d %d\n", flow, cost);
 
@@ -94,7 +111,7 @@ int main() {
         w[i] = -w[i], w[i ^ 1] = - w[i ^ 1];
     }
     //最大费用
-    printf("%d\n", -EK(flow, cost));
+    printf("%d\n", -EK2(flow, cost));
 
     return 0;
 }
