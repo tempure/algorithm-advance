@@ -44,7 +44,7 @@ void add(int a, int b, int c, int d) {
 
 bool spfa() {
     int hh = 0, tt = 1;
-    memset(d, 0xcf, sizeof d); //注意是子u最大费用
+    memset(d, 0xcf, sizeof d); //注意是求最大费用
     memset(incf, 0, sizeof incf);
     q[0] = S, d[S] = 0, incf[S] = INF;
     while (hh != tt) {
