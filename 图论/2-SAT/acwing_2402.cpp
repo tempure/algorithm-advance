@@ -72,6 +72,8 @@ int main() {
         }
     puts("POSSIBLE");
     for (int i = 0; i < n; i++)
+        //tarjan求出的是拓扑序逆序，2-SAT的答案是取拓扑序靠后的变元(贪心证明)
+        //2 * i代表假 2 * i + 1代表真
         if (id[i * 2] < id[i * 2  + 1]) printf("0 ");
         else printf("1 ");
 
