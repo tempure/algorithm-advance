@@ -15,7 +15,11 @@ ll powmod(ll a, ll b) {ll res = 1; a %= mod; assert(b >= 0); for (; b; b >>= 1) 
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //head
 
-//O(n) 做法 prufer序列
+/*
+O(n) 做法 prufer序列
+一个无向树的prufer编码只有n-2位，默认最大的编号的点不会出现
+每删掉一个点就会记录一位，最后剩下2个点没删，所以一共有n-2位
+*/
 
 const int N = 100010;
 
