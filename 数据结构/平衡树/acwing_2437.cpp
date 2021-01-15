@@ -56,7 +56,7 @@ void rotate(int x) { //左旋+右旋
     //y的左节子点是x的右子节点，或者右子节点是x的左子节点 根据左右旋(k)而定
     tr[y].s[k] = tr[x].s[k ^ 1], tr[tr[x].s[k ^ 1]].p = y; //x的右(左)子节点的父亲是y
     tr[x].s[k ^ 1] = y, tr[y].p = x;
-    pushup(y), pushup(x);  //旋转之后先pushup(y) 后pushup(x) 
+    pushup(y), pushup(x);  //旋转之后先pushup(y) 后pushup(x)
     //此处不用push(z)因为pushup本题的操作只是维护size，而z的子树size没有改变
 }
 
@@ -76,7 +76,12 @@ void splay(int x, int k) { //将x旋转到k的下边
 
 void insert(int v) {
     int u = root, p = 0;
-    //当前编号比u的编号大，就插在右子树，反之插在左子树
+    /*
+    当前编号比u的编号大，就插在右子树，反之插在左子树
+    注意:这个插入只在没有splay的时候是满足BST的结构的
+    旋转之后就没有严格的‘左子树val都小于root’的性质
+    因为splay不会去维护每个节点的val，只保持树的中序不变性
+    */
     while (u) p = u, u = tr[u].s[v > tr[u].v];
     u = ++idx;
     if (p) tr[p].s[v > tr[p].v] = u;
