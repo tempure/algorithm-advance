@@ -56,7 +56,8 @@ void rotate(int x) { //左旋+右旋
     //y的左节子点是x的右子节点，或者右子节点是x的左子节点 根据左右旋(k)而定
     tr[y].s[k] = tr[x].s[k ^ 1], tr[tr[x].s[k ^ 1]].p = y; //x的右(左)子节点的父亲是y
     tr[x].s[k ^ 1] = y, tr[y].p = x;
-    pushup(y), pushup(x);  //旋转之后先pushup(y) 后pushup(x)
+    pushup(y), pushup(x);  //旋转之后先pushup(y) 后pushup(x) 
+    //此处不用push(z)因为pushup本题的操作只是维护size，而z的子树size没有改变
 }
 
 void splay(int x, int k) { //将x旋转到k的下边
