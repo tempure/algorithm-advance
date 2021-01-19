@@ -32,7 +32,7 @@ struct Quert {
     int id, l, r;
 } q[M];
 
-int cnt[S];
+int cnt[S];  //哈希数组 每个数出现的次数
 
 int get(int x) {
     return x / len;
