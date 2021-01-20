@@ -30,8 +30,6 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 
 const int N = 100010;
 
-//改点数 看LCA
-
 int n, m, len;
 int w[N]; //节点的权值
 int h[N], e[N], ne[N], idx;
@@ -44,7 +42,7 @@ int que[N]; //bfs宽搜队列
 vi nums;  //离散化
 
 struct Query {
-    int id, l, r, p; //p是是否加上lca的标记
+    int id, l, r, p; //p是否加上lca的标记
 } q[N];
 
 void add_edge(int a, int b) {
