@@ -65,9 +65,9 @@ bool dfs() {
     for (int i = r[0]; i; i = r[i]) //找出1最少的一列 注意不要混淆r[]和row[]
         if (s[i] < s[p])
             p = i;
-    remove(p); //先删去这个表头 表示这一列已经被覆盖
+    remove(p); //先删去这个表头 表示这一列已经被覆盖 因为搜的时候只会找表头
 
-    for (int i = d[p]; i != p; i = d[i]) {
+    for (int i = d[p]; i != p; i = d[i]) { //遍历当前1最少的列的每一个1所在的行，每一行都横向遍历删除列
         ans[++top] = row[i]; //记录答案
         //删除该行除了当前被覆盖的列以外，其余所有1所在的列以及该列有1的所有行
         for (int j = r[i]; j != i; j = r[j]) remove(col[j]);
