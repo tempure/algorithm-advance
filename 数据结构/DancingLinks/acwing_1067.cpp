@@ -42,6 +42,7 @@ void add(int &hh, int &tt, int x, int y) { //在坐标(x,y)插入一个点
 
 void remove(int p) { //删除第p列 以及该列有1的所有的行
     r[l[p]] = r[p], l[r[p]] = l[p];  //删除列只需要删除表头即可
+    //下边的这个二重循环，并没有删除第p列的元素，只删除了表头
     for (int i = d[p]; i != p; i = d[i])
         for (int j = r[i]; j != i; j = r[j]) {
             //删除一行 修改该行的每个元素的上下指针即可
