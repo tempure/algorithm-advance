@@ -45,7 +45,7 @@ int main() {
         scanf("%d%d", &t, &x);
         if (t == 1) {
             v[++idx] = x;
-            dist[idx] = 1;
+            dist[idx] = 1; //插入的时候要初始化该节点的dist 空节点dist从1开始
             p[idx] = idx;
         }
         else if (t == 2) {
