@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//倍增实现SA 复杂度O(N*logN)
+
 const int N = 1000010;
 
 int n, m;
