@@ -1,4 +1,4 @@
-SAM讲义
+### SAM讲义
 ```
 一、SAM的性质:
 
@@ -11,7 +11,8 @@ SAM问题中经常考虑两种边：
 
 endpos(s)：子串s所有出现的位置（尾字母下标）集合。SAM中的每个状态都一一对应一个endpos的等价类。
 endpos的性质：
-(1) 令 s1,s2 为 S 的两个子串 ，不妨设 |s1|≤|s2| （我们用 |s| 表示 s 的长度 ，此处等价于 s1 不长于 s2 ）。则 s1 是 s2 的后缀当且仅当 endpos(s1)⊇endpos(s2) ，s1 不是 s2 的后缀当且仅当 endpos(s1)∩endpos(s2)=∅　。
+(1) 令 s1,s2 为 S 的两个子串 ，不妨设 |s1|≤|s2| （我们用 |s| 表示 s 的长度 ，此处等价于 s1 不长于 s2 ）。
+则 s1 是 s2 的后缀当且仅当 endpos(s1)⊇endpos(s2) ，s1 不是 s2 的后缀当且仅当 endpos(s1)∩endpos(s2)=∅　。
 (2) 两个不同子串的endpos，要么有包含关系，要么没有交集。
 (3) 两个子串的endpos相同，那么短串为长串的后缀。
 (4) 对于一个状态 st ，以及任意的 longest(st) 的后缀 s ，如果 s 的长度满足：|shortest(st)|≤|s|≤|longsest(st)| ，那么 s∈substrings(st) 。
