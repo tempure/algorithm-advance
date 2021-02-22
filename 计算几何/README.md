@@ -81,15 +81,15 @@ int cmp(double x, double y)  // 比较函数
         double distance_to_segment(Point p, Point a, Point b)
         {
             if (a == b) return get_length(p - a);
-            Vector v1 = b - a, v2 = p - a, v3 = p - b;
+            vector v1 = b - a, v2 = p - a, v3 = p - b;
             if (sign(dot(v1, v2)) < 0) return get_length(v2);
             if (sign(dot(v1, v3)) > 0) return get_length(v3);
             return distance_to_line(p, a, b);
         }
         (5) 点在直线上的投影
-        double get_line_projection(Point p, Point a, Point b)
+        Point get_line_projection(Point p, Point a, Point b)
         {
-            Vector v = b - a;
+            vector v = b - a;
             return a + v * (dot(v, p - a) / dot(v, v));
         }
         (6) 点是否在线段上
@@ -142,8 +142,8 @@ int cmp(double x, double y)  // 比较函数
             return s / 2;
         }
         (2) 判断点是否在多边形内（不一定是凸多边形）
-        a. 射线法，从该点任意做一条和所有边都不平行的射线。交点个数为偶数，则在多边形外，为奇数，则在多边形内。
-        b. 转角法
+        a. 射线法:从该点任意做一条和所有边都不平行的射线。交点个数为偶数，则在多边形外，为奇数，则在多边形内
+        b. 转角法:将边逆时针存储，该点向所有端点连边开始转角。如果点在多边形内那么转角总和为360°，反之为0°
         (3) 判断点是否在凸多边形内
         只需判断点是否在所有边的左边（逆时针存储多边形）。
     5.3 皮克定理
