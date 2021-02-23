@@ -67,21 +67,21 @@ int cmp(double x, double y)  // 比较函数
         // cross(v, w) == 0则两直线平行或者重合
         Point get_line_intersection(Point p, Vector v, Point q, vector w)
         {
-            vector u = p - q;
+            Vector u = p - q;
             double t = cross(w, u) / cross(v, w);
             return p + v * t;
         }
         (3) 点到直线的距离
         double distance_to_line(Point p, Point a, Point b)
         {
-            vector v1 = b - a, v2 = p - a;
+            Vector v1 = b - a, v2 = p - a;
             return fabs(cross(v1, v2) / get_length(v1));
         }
         (4) 点到线段的距离
         double distance_to_segment(Point p, Point a, Point b)
         {
             if (a == b) return get_length(p - a);
-            vector v1 = b - a, v2 = p - a, v3 = p - b;
+            Vector v1 = b - a, v2 = p - a, v3 = p - b;
             if (sign(dot(v1, v2)) < 0) return get_length(v2);
             if (sign(dot(v1, v3)) > 0) return get_length(v3);
             return distance_to_line(p, a, b);
@@ -89,7 +89,7 @@ int cmp(double x, double y)  // 比较函数
         (5) 点在直线上的投影
         Point get_line_projection(Point p, Point a, Point b)
         {
-            vector v = b - a;
+            Vector v = b - a;
             return a + v * (dot(v, p - a) / dot(v, v));
         }
         (6) 点是否在线段上
