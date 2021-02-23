@@ -65,7 +65,7 @@ int cmp(double x, double y)  // 比较函数
         (1) 判断点在直线上 A x B = 0
         (2) 两直线相交
         // cross(v, w) == 0则两直线平行或者重合
-        Point get_line_intersection(Point p, Vector v, Point q, vector w)
+        Point get_line_intersection(Point p, Vector v, Point q, Vector w)
         {
             Vector u = p - q;
             double t = cross(w, u) / cross(v, w);
