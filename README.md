@@ -1,4 +1,4 @@
-# My Competitive Programming Solutions
+### My Competitive Programming Solutions
 
 ```
 .
