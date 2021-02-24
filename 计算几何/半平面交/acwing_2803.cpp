@@ -64,7 +64,7 @@ bool cmp(const Line& a, const Line& b) {
     return A < B;
 }
 
-//求出线段pv 和 qw 的交点坐标
+//求出直线pv 和 qw 的交点坐标 注意这里用线段代替直线的方向，但是求出交点是直线的
 //用p + v*t 点向式 来表示点
 pdd get_line_intersection(pdd p, pdd v, pdd q, pdd w) {
     auto u = p - q;
@@ -73,12 +73,12 @@ pdd get_line_intersection(pdd p, pdd v, pdd q, pdd w) {
     return {p.x + v.x * t, p.y + v.y * t};
 }
 
-//重载函数 求出两线段的交点
+//重载函数 求出两直线的交点
 pdd get_line_intersection(Line &a, Line &b) {
     return get_line_intersection(a.st, a.ed - a.st, b.st, b.ed - b.st);
 }
 
-//叉积判断 线段b和c的交点是否在线段a的右侧
+//叉积判断 直线b和c的交点是否在直线a的右侧
 bool on_right(Line &a, Line &b, Line &c) {
     auto o = get_line_intersection(b, c);
     return sign(area(a.st, a.ed, o)) <= 0;
@@ -89,7 +89,7 @@ double half_plane_intersection() {
     sort(line, line + cnt, cmp);
     int hh = 0, tt = -1;
     for (int i = 0; i < cnt; i++) {
-        //遇到平行且靠右的线段 直接跳过
+        //遇到平行且靠右的直线 直接跳过
         if (i && !dcmp(get_angle(line[i]), get_angle(line[i - 1]))) continue;
         //一定要先更新队尾 h+1<=tt保证队列至少有2条边
         while (hh + 1 <= tt && on_right(line[i], line[q[tt - 1]], line[q[tt]])) tt --;
