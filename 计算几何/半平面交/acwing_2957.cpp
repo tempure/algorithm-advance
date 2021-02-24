@@ -4,6 +4,14 @@ using namespace std;
 #define x first
 #define y second
 
+/*
+将一个赛车的运动用x-t图在直角坐标系中表示 然后求所有直线的半平面交 最后计算轮廓的直线数量即可
+
+细节：要加入x轴和y轴2条直线
+速度和起点都相同的直线，用一个vector存下来，然后放在map里面
+on_right()函数要将<=改为< 因为队列之前的2条直线交点在当前最新的一条直线上 意味着此时刻多个赛车都是并列第一 都保留下来
+*/
+
 typedef long double ld; //此题精度要求很高 用long double
 typedef pair<int, int> pii;
 typedef pair<ld, ld> pdd;
