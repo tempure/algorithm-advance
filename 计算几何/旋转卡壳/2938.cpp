@@ -7,6 +7,8 @@ using namespace std;
 /*
 旋转卡壳 枚举所有对踵点距离max
 andrew算法O(NlogN) 单调扫描对踵点O(N)
+
+先扫下凸壳 保证所边都是逆时针的 也方便叉积判断面积大小
 */
 
 typedef pair<int, int> pii;
@@ -66,6 +68,7 @@ int rotating_calipers() {
     for (int i = 0, j = 2; i < top; i++) { // d=i e=i+1 de段枚举所有的凸包轮廓
         auto d = q[stk[i]], e = q[stk[i + 1]];
         //j先到第一个边对应的最远的点 然后逆时针单调走
+        //用三角形面积来判断j到边de的距离大小
         while (area(d, e, q[stk[j]]) < area(d, e, q[stk[j + 1]])) j = (j + 1) % top;
         res = max(res, max(get_dist(d, q[stk[j]]), get_dist(e, q[stk[j]])));
     }
