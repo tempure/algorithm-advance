@@ -2,6 +2,7 @@
 using namespace std;
 
 //朴素BSGS 求a^x≡b(mod p)的最小x 前提是(a,p)=1 互质
+//时间复杂度 O(sqrt(p)) p是模数
 
 typedef long long ll;
 
