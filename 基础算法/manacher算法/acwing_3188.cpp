@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+manacher模板，O(n)求最长回文子串以及子串长度
+mr为当前已经求出的回文串的最右边的边界
+*/
+
 const int N = 2e7 + 10; //插入#要开2倍+1
 
 int n;
