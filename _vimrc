@@ -33,7 +33,7 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
 "打开进入默认目录
-cd C:\Users\Xiaobin Ren\ACM
+cd C:\Users\livrth\ACM
 
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
