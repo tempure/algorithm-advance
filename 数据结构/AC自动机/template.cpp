@@ -91,7 +91,7 @@ int main() {
             int p = j;
             while (p) { //会破坏复杂度
                 res += cnt[p];
-                cnt[p] = 0;
+                cnt[p] = 0; //将该点cnt清空，是防止相同的后缀重复加
                 p = ne[p];
             }
         }
