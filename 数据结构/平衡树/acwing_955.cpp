@@ -61,6 +61,9 @@ void pushdown(int x) {
         }
     }
     else if (u.rev) {
+        //注意交换的是前后缀，不是简单交换所有的节点信息
+        //所以先交换前后缀然后单纯交换"子节点的子节点"
+        //到子节点的子节点pushdown的时候，直接交换前后缀就可以了
         u.rev = 0, l.rev ^= 1, r.rev ^= 1;
         swap(l.ls, l.rs), swap(r.ls, r.rs);
         swap(l.s[0], l.s[1]), swap(r.s[0], r.s[1]);
