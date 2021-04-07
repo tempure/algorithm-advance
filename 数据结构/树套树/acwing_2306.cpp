@@ -2,8 +2,10 @@
 using namespace std;
 
 /*
+树套树一般只有外层树的单点修改
 权值线段树：就是以(离散化)权值为下标建立线段树
 此题为权值线段树套区间线段树模板题
+需要动态开点。由于只有单点修改，直接标记永久化，不用pushup/pushdown
 */
 
 #include <iostream>
