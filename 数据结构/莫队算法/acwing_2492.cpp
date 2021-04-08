@@ -22,7 +22,7 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 左指针移动数量级m * a, m是询问数量
 右指针移动数量级n * n / a 让左右指针移动的次数尽量相等 解出a = sqrt(n*n/m)
 对于左端点在同一个块内的询问，这些询问的右端点是升序的，所以每次处理一个块的时候，右指针扫描是递增的，也就是O(N)复杂度
-而一共有大约sqrt(N)个块，所以复杂度就是O(N*sqrt(N))
+但是下一个块的时候右指针有可能需要扫回去到左边,一共有大约sqrt(N)个块，所以复杂度就是O(N*sqrt(N))
 */
 
 const int N = 50010, M = 200010, S = 1000010;
@@ -30,7 +30,7 @@ const int N = 50010, M = 200010, S = 1000010;
 int n, m, len;
 int w[N],  ans[M];
 
-struct Quert {
+struct Query {
     int id, l, r;
 } q[M];
 
@@ -40,7 +40,7 @@ int get(int x) {
     return x / len;
 }
 
-bool cmp(const Quert& a, const Quert& b) {
+bool cmp(const Query& a, const Query& b) {
     int i = get(a.l), j = get(b.l);
     if (i != j) return i < j;
     return a.r < b.r;
@@ -83,4 +83,3 @@ int main() {
     for (int i = 0; i < m; i++) printf("%d\n", ans[i]);
     return 0;
 }
-
