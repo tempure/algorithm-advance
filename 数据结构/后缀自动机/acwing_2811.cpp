@@ -5,6 +5,7 @@ using namespace std;
 将第一个串建SAM，然后后边的串和第一个匹配
 开一个now数组，每匹配一个串 就更新一次
 每次匹配失败，就跳到link后缀的node继续匹配，然后重新计算长度
+这里匹配的本质就是用SAM中的node来匹配每一个串，匹配的过程中维护node保存的最值
 
 注意每次匹配一个串之后，要dfs一遍，用子节点来更新father节点
 */
@@ -13,7 +14,7 @@ const int N = 20010;
 
 int n;
 int tot = 1, last = 1;
-char str[N];
+char str[N];//模板开2倍空间
 
 struct Node {
     int len, fa;
@@ -28,12 +29,10 @@ void extend(int c) {
     node[np].len = node[p].len + 1;
     for (; p && !node[p].ch[c]; p = node[p].fa) node[p].ch[c] = np;
     if (!p) node[np].fa = 1;
-    else
-    {
+    else {
         int q = node[p].ch[c];
         if (node[q].len == node[p].len + 1) node[np].fa = q;
-        else
-        {
+        else {
             int nq = ++ tot;
             node[nq] = node[q], node[nq].len = node[p].len + 1;
             node[q].fa = node[np].fa = nq;
@@ -49,6 +48,7 @@ void add(int a, int b) {
 void dfs(int u) {
     for (int i = h[u]; i != -1; i = ne[i]) {
         dfs(e[i]);
+        //下边较长的串节点来更新fa节点
         now[u] = max(now[u], now[e[i]]);
     }
 }
@@ -57,9 +57,11 @@ int main() {
     scanf("%d", &n);
     scanf("%s", &str); //第一个串建为SAM
     for (int i = 0; str[i]; i++) extend(str[i] - 'a');
+    //初始node[]的最大值就是endpos的最长串长度
     for (int i = 1; i <= tot; i++) ans[i] = node[i].len;
     memset(h, - 1, sizeof h);
-
+    //注意parent tree上的边建图dfs是反向的
+    //但是struct中保存的不是反向的
     for (int i = 2; i <= tot; i++) add(node[i].fa, i);
 
     for (int i = 0; i < n - 1; i++) {
