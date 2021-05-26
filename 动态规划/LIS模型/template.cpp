@@ -38,7 +38,7 @@ using namespace std;
 const int N = 1e5 + 10;
 int a[N], q[N]; //a原始序列, q[i]:长度为i的LIS的结尾的最小可能值
 
-//q[i]在二分的同时会维护单调性，严格单调递增
+//q[i]在二分的同时会维护单调性，严格单调递增 q[]一定不含相同元素
 
 int main() {
     int n; cin >> n;
@@ -51,11 +51,11 @@ int main() {
         int l = 0, r = len;
         while (l < r) {
             int mid = l + r + 1 >> 1;
-            if (q[mid] < a[i]) l = mid;
+            if (q[mid] < a[i]) l = mid; //不能写成 q[mid] <= a[i] 因为是左侧逼近找比a[i]小的最大元素,而不是找a[i]
             else r = mid - 1;
         }
         len = max(len, r + 1); //a[i]大于所有q[]的元素，那就只能接在结尾
-        q[r + 1] = a[i]; //q[r+1]是大于a[i]的，q[r]是lower_bound的结果,所以直接更新q[r+1]
+        q[r + 1] = a[i]; //q[r+1]是大于a[i]的，q[r]是小于a[i]的,所以直接更新q[r+1]
     }
     cout << len << endl;
 
