@@ -48,7 +48,7 @@ int main() {
     q[0] = 0xcfcfcfcf; //哨兵 去掉也能A 意思是长度为0的LIS的结尾最小可能值不存在
     for (int i = 0; i < n; i++) {
         //二分
-        int l = 0, r = len;
+        int l = 0, r = len; //注意此处只能l=0,r=len, len-1,len+1都会错，因为q[]内元素实际下标是[1,len]
         while (l < r) {
             int mid = l + r + 1 >> 1;
             if (q[mid] < a[i]) l = mid; //不能写成 q[mid] <= a[i] 因为是左侧逼近找比a[i]小的最大元素,而不是找a[i]
