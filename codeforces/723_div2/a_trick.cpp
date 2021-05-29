@@ -15,25 +15,39 @@ ll powmod(ll a, ll b) {ll res = 1; a %= mod; assert(b >= 0); for (; b; b >>= 1) 
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //head
 
+
 const int N = 30;
 int a[N];
 
-void solve() {
-    int n; cin >> n;
-    n *= 2;
-    for (int i = 1; i <= n ; i++) cin >> a[i];
-    sort(a + 1, a + 1 + n);
+bool check(int a[], int n) {
+    for (int i = 1; i <= n - 1; i++)
+        if (a[i] == (a[i - 1] + a[i + 1]) / 2) {
+            return false;
+        }
+    if (a[0] == (a[1] + a[n - 1]) / 2) return false;
+    if (a[n - 1] == (a[n - 2] + a[0]) / 2) return false;
 
-    for (int i = 1; i <= n / 2; i++) cout << a[i] << ' ' << a[i + n / 2] << ' ';
-    cout << endl;
+    return true;
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-
+    std::srand ( unsigned ( std::time(0) ) );
     int t; cin >> t;
-    while (t --) solve();
+    while (t --) {
+        int n; cin >> n;
+        n *= 2;
+        for (int i = 0; i < n; i++) cin >> a[i];
+        if (n < 4) {
+            for (int i = 0; i < n; i++) cout << a[i] << ' ';
+            cout << endl;
+            continue;
+        }
+        while (!check(a, n))random_shuffle(a, a + n);
+        for (int i = 0; i < n; i++) cout << a[i] << ' ';
+        cout << endl;
+    }
 
     return 0;
 }
