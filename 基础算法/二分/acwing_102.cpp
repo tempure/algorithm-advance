@@ -30,7 +30,7 @@ int main() {
     cin >> n >> f;
     for (int i = 1; i <= n; i++) cin >> a[i];
     double l = 0, r = 2000;
-    while (r - l > 1e-5) {
+    while (r - l > 1e-5) { //题目本质是保留三位小数的精度，那么取1e-5精度即可
         double mid = (l + r) / 2;
         if (check(mid)) l = mid;
         else r = mid;
