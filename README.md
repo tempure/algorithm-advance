@@ -1,5 +1,4 @@
-<!-- ### My Competitive Programming Solutions -->
-### 菜的真实
+### My Competitive Programming Solutions
 
 ```
 .
@@ -25,7 +24,6 @@
 │   ├── Prufer编码
 │   ├── 二分图
 │   ├── 单源&多源最短路
-│   ├── 单源最短路应用
 │   ├── 单源最短路扩展
 │   ├── 差分约束
 │   ├── 强连通分量
