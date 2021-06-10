@@ -18,10 +18,26 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //head
 
 
-
+pii a[110];
+int n;
 
 void solve() {
-    pq<pii, vector<pii> ,greater<pii>> q; 
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        int x; cin >> x;
+        a[i] = {x, i};
+    }
+    sort(a + 1, a + 1 + n);
+    // for(int i = 1; i <= n; i++) cout << a[i].second;
+    //     cout << endl;
+    int xmin =  min(a[1].second, a[n].second);
+    int xmax = max(a[n].second, a[1].second);
+    // int t = min(a[1].second, n - a[1].second + 1) + min(a[n].second, n - a[n].second + 1);
+    int t = xmin + n + 1 - xmax;
+    // int tt = min(max(xmin, xmax), n + 1 - min(xmin, xmax));
+    int tt = min(xmax, n + 1 - xmin);
+
+    cout << min(tt, t) << endl;
 }
 
 int main() {
@@ -29,7 +45,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;  
+    cin >> t;
     while (t --) solve();
 
     return 0;
