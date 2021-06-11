@@ -17,42 +17,48 @@ ll powmod(ll a, ll b) {ll res = 1; a %= mod; assert(b >= 0); for (; b; b >>= 1) 
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //head
 
-const int N = 1e5; // 数组开sqrt(N) 的数量级即可 看循环的次数
-int p1[N], c1[N]; //p存储质因子 c存储幂次
-int p2[N], c2[N];
+// const int N = 1e5; // 数组开sqrt(N) 的数量级即可 看循环的次数
+map<int, pii> mii;
 
-void divide(int n, int p[], int c[], int &m) {
-    m = 0;
-    for (int i = 2; i <= n / i; i++) {
+void divide(int n, int flag) {
+    for (int i = 2; i * i <= n; i++) { //这里写成i <= n /i 会T掉，草
         if (n % i == 0) {
-            p[++m] = i; c[m] = 0; //一定要先存i 然后c[m]=0 顺序反会错
-            while (n % i == 0) n /= i, c[m]++;
+            if (flag == 1)while (n % i == 0) n /= i, mii[i].first++;
+            else {
+                while (n % i == 0) n /= i, mii[i].second++;
+            }
         }
     }
-
-    //n为质数直接存 上边的for循环不会进入
-    if (n > 1) p[++m] = n, c[m] = 1;
-
-    // //输出因子和对应次幂
-    // for (int i = 1; i <= m; i++)
-    //     cout << p[i] << ' ' << c[i] << endl;
-    // cout << endl;
+    if (n > 1) {
+        if (flag == 1) mii[n].first++;
+        else mii[n].second++;
+    }
 }
 
-
 void solve() {
+    mii.clear();
     int a, b, k;
     cin >> a >> b >> k;
-    int m1 = 0, m2 = 0;
-    divide(a, p1, c1, m1); divide(b, p2, c2, m2);
-    int res = max(m1, m2) - min(m1, m2);
-    int mm = min(m1, m2);
-    for (int i = 1; i <= mm; i++)
-        if (p1[i] != p2[i])res += 2;
-        else if (c1[i] != c2[i]) res ++;
+    divide(a, 1); divide(b, 2);
+    int res = 0;
+    for (auto t : mii) {
+        if (t.second.first != t.second.second) res ++;
+    }
 
-    if (res != k) cout << "NO" << endl;
-    else cout << "YES" << endl;
+    // for (auto t : mii) cout << t.first << ' ' << t.second.first << ' ' << t.second.second << endl;
+    int sum = 0;
+    for (auto t : mii) {
+        sum += t.second.first + t.second.second;
+    }
+    if (a == b) res = 0;
+    else if (gcd(a, b) == a || gcd(a, b) == b) res = 1;
+    else res = 2;
+
+    if (k >= res && k <= sum && k == 1 && res == 1) puts("YES");
+    else if (k >= res && k <= sum && k != 1) puts("YES");
+    else puts("NO");
+    // if (res >= k && res <= sum) cout << "YES" << endl;
+    // else cout << "NO" << endl;
 }
 
 int main() {

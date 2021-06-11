@@ -18,20 +18,18 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //head
 
 
-
-
 void solve() {
-    // string l, r;
     int l, r;
     cin >> l >> r;
-    string strl = to_string(l);
-    string strr = to_string(r);
-    int len1 = sz(strl);
-    int len2 = sz(strr);
-    ll res = r - l;
-    for (int i = len1; i <= len2; i++)
-        res +=
+    int res = 0;
+
+    while (l != 0 || r != 0) {
+        res += r - l;
+        l /= 10;
+        r /= 10;
     }
+    cout << res << endl;
+}
 
 int main() {
     ios::sync_with_stdio(false);

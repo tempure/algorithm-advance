@@ -20,21 +20,23 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 
 const int N = 2e5 + 10;
 int a[N];
-int n;
-
 
 void solve() {
     int n, l, r;
     cin >> n >> l >> r;
     for (int i = 0; i < n; i++) cin >> a[i];
     sort(a, a + n);
-    ll res = 0;
-    for (int i = 0; i < n; i++) {
-        int j1 = upper_bound(a, a + n, r - a[i]) - a;
-        int j2 = upper_bound(a, a + n, l - a[i]) - a;
-        res += j1 - j2 + 1;
-    }
-    cout << res / 2 << endl;
+    auto count_below = [&](int cutoff) -> ll{
+        ll sum = 0;
+        for (int i = 0, j = n - 1; i < j; i++) {
+            while (j > i && a[i] + a[j] > cutoff)
+                j --;
+            // sum += max(j - i, 0);
+            sum += j - i;
+        }
+        return sum;
+    };
+    cout << count_below(r) - count_below(l - 1) << endl; //二分左边界 等于也要一直左移 所以不能是l
 }
 
 int main() {
