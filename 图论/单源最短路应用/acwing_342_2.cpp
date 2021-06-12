@@ -44,6 +44,15 @@ void dfs(int u, int bid) {
 void dijkstra(int bid) {
     memset(v, 0, sizeof v);
     pq<pii, vector<pii>, greater<pii>> heap;
+
+    /*
+    模板题测了初始情况下将待求dij的所有点加入堆中是不会影响dij算法的正确性
+    首先此题必须全部加入才知道哪些点是待求的
+
+    正确性：将所有点入堆，不影响这些点dist[]的优先顺序，没被更新的依然dist是INF
+    更新过的在本次dij开始会清空v数组，重新从dist最小的点开始bfs邻边然后更新
+    bfs过程没有改变，所以算法依然正确
+    */
     for (auto u : block[bid]) heap.push({d[u], u});
 
     while (heap.size()) {
