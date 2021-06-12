@@ -20,11 +20,10 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 const int N = 25010, M = 150010, INF = 0x3f3f3f3f;
 int h[N], ne[M], e[M], idx, w[M];
 vector<int> block[N];
-int bcnt;
-int id[N];
+int bcnt, id[N]; //bcnt 连通块个数 id[x] x点所在的连通块编号
 bool v[N];
-int din[N];
-int d[N];
+int din[N]; //每个连通块的入度
+int d[N]; //dijkstra 最短路距离
 int mr, mp, s, n;
 queue<int> q;
 
