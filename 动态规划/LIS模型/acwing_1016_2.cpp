@@ -17,6 +17,10 @@ ll powmod(ll a, ll b) {ll res = 1; a %= mod; assert(b >= 0); for (; b; b >>= 1) 
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //head
 
+
+//和LIS问题唯一不同的就是+1变为+a[i]
+//DP的状态转移过程完全相同,都是以a[i]结尾的最大性质
+
 const int N = 1010;
 int a[N];
 int f[N];
@@ -28,6 +32,7 @@ void solve() {
     for (int i = 0; i < n; i ++) {
         f[i] = a[i];
         for (int j = 0; j < i; j++)
+            //和LIS问题唯一不同的就是+1变为+a[i]
             if (a[j] < a[i]) f[i] = max(f[i], f[j] + a[i]);
     }
     int res = 0;
