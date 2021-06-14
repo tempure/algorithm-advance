@@ -4,6 +4,19 @@ typedef pair<int, int> pii;
 #define x first
 #define y second
 
+/*
+若干个连通块之间加一条边，要图的直径最小
+
+一个显然的性质：加一条边连接2个连通块后大连通块的直径必然大于原来的2个之一任何一个连通块的直径
+
+所以要么最大直径属于一个独立的连通块，尝试连接其他的所有任何2个连通块得到的直径都小于该独立连通块
+要么最大就是该独立连通块的直径
+
+如果尝试连接2个连通块后得到的最小直径都大于最大的独立连通块直径，那么答案就是该连通块连接后的直径
+
+两种情况取max即可得到较大的那个 必须要取的直径
+*/
+
 const int N = 150;
 const double INF = 1e20;
 int n;
@@ -38,6 +51,7 @@ void solve() {
         for (int j = 0; j < n; j ++)
             if (d[i][j] < INF)
                 maxd[i] = max(maxd[i], d[i][j]);
+
     //连通块内的最长直径
     double res1 = 0;
     for (int i = 0; i < n; i++) res1 = max(res1, maxd[i]);
