@@ -27,6 +27,11 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 由于是循环的，所以前缀和要分成2段来求，每次用的都是长度为8的一段
 1~7的要加上末尾的一段才能补成8个小时
 
+s[i] - s[i-1] >= 0
+s[i] - s[i-1] <= num[i];
+i >= 8, s[i] - s[i-8] >= r[i];
+i >= 1 && i <= 7, s[i] + s[24] - s[16 + i] >= r[i]
+s[24] >= s[0] + k, s[0] >= s[24] - k //保证s[24]是当前枚举的定值k
 列式子后发现s[24]不是定值，不能直接差分约束，所以直接枚举s[24]，只有1000个最多
 取最小的s[24]有解的就是答案，如果有正环则无解
 */
@@ -50,7 +55,7 @@ void add(int a, int b, int c) {
 
 bool v[30];
 int ct = 0;
-void dfs(int u) { //必要时写个 dfs检测0能不能走到所有点
+void dfs(int u) { //必要时写个 dfs检测0能不能走到所有点 来决定是否初始所有点入队
     v[u] = 1;
     for (int i = h[u]; ~i; i = ne[i]) {
         int j = e[i];
@@ -75,7 +80,7 @@ void build(int c) { //建图
 
 bool spfa(int c) {
     build(c);
-    dfs(0);
+    // dfs(0);
     // cout << "*********" << ct << endl;
     memset(cnt, 0, sizeof cnt);
     memset(st, 0, sizeof st);
