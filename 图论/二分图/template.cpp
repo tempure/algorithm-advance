@@ -36,7 +36,7 @@ void solve() {
     }
 }
 
-//染色法判断二分图
+//DFS染色法判断二分图 O(M+N)
 bool dfs(int u, int c) { //c表示把u染成c颜色1,2两种颜色之一
     color[u] = c;
     for (int i =  h[u]; ~i; i = ne[i]) {
