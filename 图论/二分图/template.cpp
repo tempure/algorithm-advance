@@ -58,6 +58,8 @@ int main() {
     }
 
     bool flag = true;
+    //处理非连通图，每个连通块dfs一次
+    //如果图连通就不需要枚举点染色
     for (int i = 1; i <= n; i++) {
         if (!color[i]) {
             if (!dfs(i, 1)) {
