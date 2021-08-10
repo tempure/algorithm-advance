@@ -28,6 +28,9 @@ void manacher() {
         if (i < mr) p[i] = min(p[mid * 2 - i], mr - i);
         else p[i] = 1;
 
+        //这个while循环只有在p[i] = mr-i 的情况才会进行更新p[i]
+        //如果是p[i] = p[mid * 2 -i],那么直接O(1)计算出p[i],不会在这里while花费复杂度
+        //所以整个算法的复杂度可以由内层的while决定，但是这个循环的mr是递增的，mr到字符串结尾的时候算法结束，所以是O(N)
         while (b[i - p[i]] == b[i + p[i]]) p[i]++;
         if (i + p[i] > mr) {
             mr = i + p[i];
