@@ -4,16 +4,10 @@
 using namespace std;
 using pdd = pair<double, double>;
 
+
 /*
-几点注意事项：
-q[]队列里面存的是边的编号
-
-S&I 算法每次都要先更新队尾，后更新队头的解释：
-对于假如一个新的边，能把所有边都弹出去的特殊情况，参考oi-wiki的三条边的特殊情况
-这样如果先更新队头，那么就把第一条加的边删掉了，这样就留下了后加入的两条边
-此时hh+1=tt,队中只有两条边，停止更新了
-
-如果先更新队尾，那么就留下了第一条和第三条边，这才是正确的直线平面交集
+问题的转换：此题可以直接求所有多边形边的半平面交，思考一个按照极角排序后进行队列更新的过程
+理解起来就是多个多边形同时逆时针转选择边来更新交集，最后显然也是所有多边形的交集
 */
 
 const int N = 510;
@@ -55,6 +49,7 @@ double area(pdd a, pdd b, pdd c) {
     return cross(b - a, c - a);
 }
 
+//如果平行，会把靠左的边放在较前的位置
 bool cmp(const Line &a, const Line &b) {
     double A = get_angle(a), B = get_angle(b);
     if (!dcmp(A, B)) return area(a.st, a.ed, b.ed) < 0;
