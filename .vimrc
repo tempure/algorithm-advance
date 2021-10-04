@@ -18,8 +18,8 @@ inoremap {{ {
 inoremap {} {}
 
 "ctrl+b编译 ctrl+n运行
-autocmd filetype cpp nnoremap <C-B> :w <bar> !g++ -std=c++14 % -o %:r -W<CR>
-autocmd filetype cpp nnoremap <C-N> :!./%:r<CR>
+autocmd filetype cpp nnoremap <C-B> :w <bar> !g++ -std=c++14 % -o %:r.out -W<CR>
+autocmd filetype cpp nnoremap <C-N> :!./%:r.out<CR>
 autocmd filetype cpp nnoremap <C-A> :%y+<CR>
 autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
 
