@@ -24,7 +24,7 @@ int dx[4] = { -1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 bool dfs(int x, int y) {
     for (int i = 0; i < 4; i++) {
         int a = x + dx[i], b = y + dy[i];
-        if (a < 1 | a > n || b < 1 || b > n) continue;
+        if (a < 1 || a > n || b < 1 || b > n) continue;
         if (st[a][b] || g[a][b]) continue;
 
         pii t = mc[a][b];
