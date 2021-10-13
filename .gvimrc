@@ -31,8 +31,8 @@ set guioptions-=L
 set guioptions-=r
 set guioptions-=b
 " 使用内置 tab 样式而不是 gui
-set guioptions-=e
-set nolist
+"set guioptions-=e
+"set nolist
 
 "语言显示为英文
 " set the menu & the message to English
