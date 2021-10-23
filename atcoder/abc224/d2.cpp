@@ -6,7 +6,7 @@
 #include <queue>
 using namespace std;
 
-//statement of D is really ambigious
+//statement of D is really ambiguous
 // I don't understand it well...
 
 int main(void)
