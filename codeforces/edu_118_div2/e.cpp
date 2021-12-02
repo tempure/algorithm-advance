@@ -1,69 +1,54 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define pb push_back
-#define all(x) (x).begin(), (x).end()
-#define um unordered_map
-#define pq priority_queue
-#define sz(x) ((int)(x).size())
-#define x first
-#define y second
-#define endl '\n'
-typedef vector<int> vi;
-typedef long long ll;
-typedef unsigned long long ull;
-typedef pair<int, int> pii;
-mt19937 mrand(random_device{}());
-const ll mod = 1000000007;
-int rnd(int x) { return mrand() % x;}
-ll mulmod(ll a, ll b) {ll res = 0; a %= mod; assert(b >= 0); for (; b; b >>= 1) {if (b & 1)res = (res + a) % mod; a = 2 * a % mod;} return res;}
-ll powmod(ll a, ll b) {ll res = 1; a %= mod; assert(b >= 0); for (; b; b >>= 1) {if (b & 1)res = res * a % mod; a = a * a % mod;} return res;}
-ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
-//head
+using LL = long long;
+constexpr int mod = 998244353;
 
-const int N = 1e3 + 10;
-char a[N][N];
+//https://codeforces.com/contest/1613/submission/137662766
 
-void solve() {
-    int n, m;
-    cin >> n >> m;
-    int X, Y;
-    for (int i = 1; i <= n; i ++)
-        for (int j = 1; j <= m; j++) {
-            cin >> a[i][j];
-            if (a[i][j] == 'L') {
-                X = i, Y = j;
-            }
-        }
-    int dx[4] = { -1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
-    queue<pair<int, int> > q;
-    q.push({X, Y});
-    while (q.size() > 1) {
-        auto t = q.front();
-        q.pop();
-        int x = t.first, y = t.second;
-        int cnt = 0;
-        for (int i = 0; i < 4 ; i++) {
-            if (x + dx[i] >= 1 && x + dx[i] <= n &&
-                    y + dy[i] >= 1 && y + dy[i] <= m &&
-                    a[x + dx[i]][y + dy[i]] == '.') {
-                cnt++;
-                q.push({x + dx[i], y + dy[i]});
-            }
-        }
-        if (a[x][y] == '.' && cnt <= 1) a[x][y] = '+';
-    }
+//https://www.bilibili.com/video/BV1pL41177eE?t=8298.0
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            cout << a[i][j] << ' ' ;
-        }
-        cout << endl;
-    }
-}
+/*
+如果只有一条路不能走回L,那么就把这条路标记为 + ，那么其余所有路都肯定能走回去L
+*/
 
 int main() {
-    int t = 1;
-    cin >> t;
-    while (t --) solve();
+    cin.tie(nullptr)->sync_with_stdio(false);
+    int t;
+    for (cin >> t; t; t -= 1) {
+        int n, m;
+        cin >> n >> m;
+        vector<string> vs(n);
+        vector d(n, vector<int>(m));
+        for (auto& s : vs) cin >> s;
+        queue<pair<int, int>> q;
+        for (int i = 0; i < n; i += 1)
+            for (int j = 0; j < m; j += 1) {
+                if (vs[i][j] == '.') {
+                    if (i and vs[i - 1][j] != '#') d[i][j] += 1;
+                    if (i + 1 < n and vs[i + 1][j] != '#') d[i][j] += 1;
+                    if (j and vs[i][j - 1] != '#') d[i][j] += 1;
+                    if (j + 1 < m and vs[i][j + 1] != '#') d[i][j] += 1;
+                }
+                if (vs[i][j] == 'L')
+                    q.emplace(i, j);
+            }
+        while (not q.empty()) {
+            auto [i, j] = q.front();
+            q.pop();
+            vector<int> di = { -1, 1, 0, 0}, dj = {0, 0, -1, 1};
+            for (int k = 0; k < 4; k += 1) {
+                int ni = i + di[k], nj = j + dj[k];
+                if (ni < 0 or ni >= n or nj < 0 or nj >= m) continue;
+                if (vs[ni][nj] == '.') {
+                    d[ni][nj] -= 1;
+                    if (d[ni][nj] <= 1) {
+                        vs[ni][nj] = '+';
+                        q.emplace(ni, nj);
+                    }
+                }
+            }
+        }
+        for (auto& s : vs) cout << s << "\n";
+    }
     return 0;
 }
