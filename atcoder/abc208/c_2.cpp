@@ -4,8 +4,6 @@
 #include <vector>
 using namespace std;
 
-// iota : https://en.cppreference.com/w/cpp/algorithm/iota
-
 int main() {
   int N;
   long long K;
@@ -15,7 +13,10 @@ int main() {
   for (auto& x : a) cin >> x;
 
   vector<int> order(N);
-  iota(begin(order), end(order), 0);
+  for (int i = 0; i < N; i++) order[i] = i;
+
+
+  //按照元素大小把数组下标排序
   sort(begin(order), end(order), [&](int i, int j) { return a[i] < a[j]; });
 
   // for (auto t : order) cout << t << ' ';
