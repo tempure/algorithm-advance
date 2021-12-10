@@ -19,13 +19,34 @@ ll powmod(ll a, ll b) {ll res = 1; a %= mod; assert(b >= 0); for (; b; b >>= 1) 
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //head
 
-void solve() {
+//https://atcoder.jp/contests/abc218/editorial/2628
+//暴力枚举做下角和右上角的坐标，然后同时二分检查左上角和右下角的点是否在图中
+//当然也可以直接把所有点都初始放在set里面，查询起来更快
 
+//O(N^2)
+
+void solve() {
+    int n;
+    cin >> n;
+    vector<pii> v(n);
+    set<pii> S;
+    for (int i = 0; i < n; i++) {
+        cin >> v[i].x >> v[i].y;
+        S.insert({v[i].x, v[i].y});
+    }
+    int res = 0;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            if (v[i].x < v[j].x && v[i].y < v[j].y) {
+                if (S.count({v[i].x, v[j].y}) && S.count({v[j].x, v[i].y}))
+                    res ++;
+            }
+    cout << res << endl;
 }
 
 int main() {
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t --) solve();
     return 0;
 }
