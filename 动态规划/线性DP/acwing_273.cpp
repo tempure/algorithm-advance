@@ -3,6 +3,9 @@ using namespace std;
 
 //POJ3666
 //https://www.acwing.com/video/399/
+//https://www.acwing.com/solution/content/4956/
+
+//贪心 + 线性DP
 
 const int N = 2010, INF = 0x3f3f3f3f;
 int a[N], b[N];
