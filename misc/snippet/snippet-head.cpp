@@ -5,8 +5,8 @@ using namespace std;
 #define um unordered_map
 #define pq priority_queue
 #define sz(x) ((int)(x).size())
-#define x first
-#define y second
+#define fi first
+#define se second
 #define endl '\n'
 #define watch(x) cerr << (#x) << " is " << (x) << endl
 typedef vector<int> vi;
@@ -22,12 +22,12 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //head
 
 void solve() {
-    
+
 }
 
 int main() {
     int t = 1;
-    // cin >> t; 
+    // cin >> t;
     while (t --) solve();
     return 0;
 }
