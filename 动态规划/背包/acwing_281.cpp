@@ -2,6 +2,8 @@
 
 //《算法竞赛进阶指南》,POJ1742,男人八题
 //https://www.acwing.com/solution/content/11075/ 评论区作者
+//和 lyd 视频讲的状态定义不一样，这个比较容易理解
+//POJ会卡内存,要优化掉一维空间才行，这个是二维的写法
 
 const int N = 1e2 + 5, M = 1e5 + 5;
 int n, m, a[N], c[N], used[N][M];
