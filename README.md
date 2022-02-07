@@ -1,4 +1,6 @@
-### My Competitive Programming Solutions
+; ### My Competitive Programming Solutions
+
+#### _The expert at anything was once a beginner – Helen Hayes_
 
 ```
 .
