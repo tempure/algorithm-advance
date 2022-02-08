@@ -22,6 +22,7 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 
 //分组背包
 //循环内外层顺序 外到内 阶段->状态->决策 具体参考蓝书
+//时间复杂度O(N*M*S) N组数 M体积 S每组物品数量
 
 const int N = 110;
 int v[N], w[N], f[N];
