@@ -20,6 +20,11 @@ ll powmod(ll a, ll b) {ll res = 1; a %= mod; assert(b >= 0); for (; b; b >>= 1) 
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //head
 
+
+//2022 2.9 update
+//lyd 讲解，不用yxc那种递推消去式子观察的方法，这种直接理解更为简单
+//https://www.acwing.com/video/1972/
+
 //分组背包
 //循环内外层顺序 外到内 阶段->状态->决策 具体参考蓝书
 //时间复杂度O(N*M*S) N组数 M体积 S每组物品数量
