@@ -23,7 +23,6 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 const int N = 30;
 ll dp[N][N]; //答案会爆掉 int
 
-
 //answer is  137846528820
 
 void solve() {
