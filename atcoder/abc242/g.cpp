@@ -24,6 +24,14 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //给我整不会了。。。
 //不知道啥原因RE
 
+//upd: 板子出锅了，len被大数据可能为0 比如下面，所以len小于1时候改为1就过了
+/*
+2
+2 2
+114514
+*/
+
+
 // #define int long long
 
 const int N = 1010000, M = 1010000, S = 1010000;
@@ -62,6 +70,8 @@ void solve() {
     }
     cin >> m;
     len = sqrt((long double)1.0 * n * n / m);
+    if (len < 1) len = 1; //注意 len 不要为0
+    // cout << "LEN = " << len << endl;
     for (int i = 0; i < m; i++) {
         int l, r;
         cin >> l >> r;
