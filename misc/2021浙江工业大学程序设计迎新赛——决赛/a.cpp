@@ -20,6 +20,7 @@ ll powmod(ll a, ll b) {ll res = 1; a %= mod; assert(b >= 0); for (; b; b >>= 1) 
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //head
 
+
 void solve() {
     int n, k;
     cin >> n >> k;
