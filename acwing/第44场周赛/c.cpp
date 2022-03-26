@@ -38,7 +38,7 @@ int main()
         int x;
         scanf("%d", &x);
         LL y = 1, z = 1;
-        for (int i = 2; i * i <= x; i ++ )
+        for (int i = 2; i * i <= x; i ++ ) //暴力分解不会超时O(sqrt(N)*N) 最快就是倍数法线性筛
             if (x % i == 0)
             {
                 int s = 0;
