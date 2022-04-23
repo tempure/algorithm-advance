@@ -25,6 +25,13 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //https://www.acwing.com/solution/content/6676/
 //https://www.acwing.com/solution/content/2130/
 
+
+/*
+单调队列优化DP的 trick：
+如果要求是max，那么队列内维护递减，每次队头都是最优最大
+如果是min，那么队列内维护递增序列
+*/
+
 struct rec { int L, P, S; } a[110];
 int n, m;
 int f[110][16010], q[16010];
