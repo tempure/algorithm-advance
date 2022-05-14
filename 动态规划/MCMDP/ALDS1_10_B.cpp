@@ -2,7 +2,8 @@
 using namespace std;
 #define int long long
 
-//Matrix chain multiplication 矩阵链乘积
+//Matrix chain multiplication 矩阵链乘积 DP 朴素实现 O(N^3)
+
 //https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%99%A3%E9%8F%88%E4%B9%98%E7%A9%8D
 //https://blog.csdn.net/qq_43427808/article/details/109195977
 //https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_10_B  模板题
