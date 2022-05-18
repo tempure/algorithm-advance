@@ -1,0 +1,67 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define pb push_back
+#define all(x) (x).begin(), (x).end()
+#define um unordered_map
+#define pq priority_queue
+#define sz(x) ((int)(x).size())
+#define fi first
+#define se second
+#define endl '\n'
+typedef vector<int> vi;
+typedef long long ll;
+typedef unsigned long long ull;
+typedef pair<int, int> pii;
+mt19937 mrand(random_device{}());
+const ll mod = 1000000007;
+int rnd(int x) { return mrand() % x;}
+ll mulmod(ll a, ll b) {ll res = 0; a %= mod; assert(b >= 0); for (; b; b >>= 1) {if (b & 1)res = (res + a) % mod; a = 2 * a % mod;} return res;}
+ll powmod(ll a, ll b) {ll res = 1; a %= mod; assert(b >= 0); for (; b; b >>= 1) {if (b & 1)res = res * a % mod; a = a * a % mod;} return res;}
+ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
+//head
+
+const int N = 86400;
+int t[N + 10];
+
+void solve() {
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        int hh1, mm1, ss1;
+        int hh2, mm2, ss2;
+        scanf("%d:%d:%d - %d:%d:%d", &hh1, &mm1, &ss1, &hh2, &mm2, &ss2);
+        int start = hh1 * 3600 + mm1 * 60 + ss1;
+        int end = hh2 * 3600 + mm2 * 60 + ss2;
+        for (int i = start; i <= end; i++) t[i] = 1;
+    }
+    for (int i = 0; i < 86400; i++) {
+        if (t[i] == 0) {
+            int s = i;
+            while (t[i] == 0 && i < 86400)i++;
+            // i--;
+            int e = i;
+            // cout << s << ' ' << e << endl;
+            int h1 = s / 3600;
+            s %= 3600;
+            int m1 = s / 60;
+            s %= 60;
+            int s1 = s;
+            printf("%d:%d:%d", h1, m1, s1);
+
+            int h2 = e / 3600;
+            e %= 3600;
+            int m2 = e / 60;
+            e %= 60;
+            int s2 = e;
+            printf(" - %d:%d:%d\n", h2, m2, s2);
+        }
+        // i--;
+    }
+}
+
+int main() {
+    int t = 1;
+    // cin >> t;
+    while (t --) solve();
+    return 0;
+}
