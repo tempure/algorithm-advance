@@ -22,6 +22,7 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 
 //https://codeforces.com/problemset/problem/702/A
 //这个题为啥也是DP标签....?
+//怎么DP...不太懂
 
 void solve() {
     int n;
