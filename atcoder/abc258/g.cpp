@@ -26,7 +26,8 @@ char a[N][N];
 int n;
 bitset<N> b[N];
 
-//bitset 优化一下 O(N^3)
+//无向图三元环计数裸题
+//bitset 优化一下 O(N^3 / 64)
 //https://zhuanlan.zhihu.com/p/536825969
 
 void solve() {
