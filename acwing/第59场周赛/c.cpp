@@ -21,7 +21,7 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a;}
 //head
 
 //DSU 维护连通块
-//每个连通块中如果点读书都是2 就行
+//每个连通块中如果点度数都是 2 就行
 
 const int N = 200010;
 
