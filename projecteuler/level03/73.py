@@ -1,7 +1,8 @@
 # approach 1, time cost = 2.97 s ± 6.42 ms
 # ans = 7295372
 # https://pe.metaquant.org/pe073.html
-# how to compute F(N) in approach2 ??
+# 计算 F(N) 的 sigma(floor((i-1)/2) - floor(i/3))
+# 是算以i为分母是有几个分子在1/3和1/2之间
 
 def farey_seq(n=12000):
     b, d = 3, 11999
