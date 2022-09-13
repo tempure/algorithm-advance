@@ -8,7 +8,7 @@ def partition(i,j):
     if i == 1 or j == 1:
         return 1
     elif i <= j:
-        return partition(i,i-1)+1
+        return partition(i,i-1)+1 # 这里拆分思路是包括n以及不包括n的, n<=k
     else:
         return partition(i,j-1) + partition(i-j,j)
 
