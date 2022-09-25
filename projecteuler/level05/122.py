@@ -1,5 +1,5 @@
 # Addition-chain exponentiation: https://en.wikipedia.org/wiki/Addition-chain_exponentiation
-# NP 完全问题，Donald E. Knuth 在 TAOCP 书里面给了一个递归式求解1000以下指数次幂对应的算法，对本题最大200的的数据范围足够
+# NP 完全问题，Donald E. Knuth 在 TAOCP 书里面给了一个递归式求解1000以下指数次幂对应的算法，对本题最大200的数据范围足够
 # https://pe.metaquant.org/pe122.html
 # ans = 1582
 
