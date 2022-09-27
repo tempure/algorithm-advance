@@ -13,6 +13,7 @@
 
 注意题目求的是A_F(x)也就是 n 而不是 x, 而且注意x=5*n+1的x是后面佩尔方程的x，和前面AF_x(x) 的自变量不是一回事。
 
+https://pe.metaquant.org/pe137.html
 ans = 1120149658760
 """
 
