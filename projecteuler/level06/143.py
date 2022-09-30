@@ -10,7 +10,7 @@
 # 代码实现的话就是用集合的 & 求交集操作
 
 # https://pe.metaquant.org/pe143.html
-# 30758397
+# ans = 30758397
 
 from math import gcd
 from collections import defaultdict
@@ -23,7 +23,7 @@ def generate_pairs(N=120000):
                 q,r = 2*i*j+j**2,i**2-j**2
                 q,r = max(q,r),min(q,r)
             for k in range(1,N//q+1):
-                pairs[k*q].add(k*r) # 基本解乘倍数地推出其他合法解
+                pairs[k*q].add(k*r) # 基本解乘倍数递推出其他合法解
     return pairs
 
 def main(N=120000):
