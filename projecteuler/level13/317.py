@@ -1,5 +1,6 @@
 """
 Envelope: https://en.wikipedia.org/wiki/Envelope_(mathematics)
+https://pe.metaquant.org/pe317.html
 求抛物线方程，然后求包络线方程
 每一个角度对应一个抛物线轨迹，而这些抛物线轨迹的包络线可以将这些抛射轨迹都包含其中
 就是一堆抛物线他们互相交叉，但是包络线是和这些所有抛物线都至少有一个点相切的最外面的那条
