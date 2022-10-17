@@ -2,6 +2,7 @@ from math import sqrt, asin, pi
 
 # 解析几何题，然后直观求面积就行了
 # 技巧就是设斜率和交点横坐标的关系
+# https://pe.metaquant.org/pe587.html
 # ans = 2240
 
 def t(n):
